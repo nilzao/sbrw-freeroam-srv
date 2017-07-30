@@ -19,7 +19,7 @@
         <configuration>
           <archive>
             <manifest>
-              <mainClass>world.soapboxrace.srv.Main</mainClass>
+              <mainClass>world.soapboxrace.srv.netty.Main</mainClass>
             </manifest>
           </archive>
           <descriptorRefs>
