@@ -67,6 +67,13 @@ public class FreeroamVisibleTalkers {
 		if (indexOf == -1) {
 			addTalker(newFreeroamTalker, freeroamTalker);
 		}
+		// for (FreeroamTalker freeroamTalker2 : visibleTalkers) {
+		// System.out.println("[" + freeroamTalker.getPort() + "] inside ------------------");
+		// if (freeroamTalker2 != null) {
+		// System.out.println(freeroamTalker2.getPort());
+		// }
+		// System.out.println("");
+		// }
 	}
 
 	private void addTalker(FreeroamTalker newFreeroamTalker, FreeroamTalker freeroamTalker) {

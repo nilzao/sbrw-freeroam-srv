@@ -32,6 +32,7 @@ public class FreeroamTalker {
 	}
 
 	public void broadcastPlayersInfo() {
+		FreeroamRangeCalc.setVisibleTalkersToTalker(this);
 		freeroamVisibleTalkers.broadcastPlayersInfoToTalker(this);
 	}
 
@@ -88,7 +89,12 @@ public class FreeroamTalker {
 	}
 
 	public void sendFullPacket(byte[] packet) {
-
+		ByteBuffer byteBuff = ByteBuffer.allocate(packet.length + 3);
+		byteBuff.put((byte) 0x00);
+		byteBuff.put((byte) 0x00);
+		byteBuff.put((byte) 0x07);
+		byteBuff.put(packet);
+		send(byteBuff.array());
 	}
 
 	public void removeVisibleTalkers() {
