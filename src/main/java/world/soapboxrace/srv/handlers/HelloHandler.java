@@ -28,7 +28,8 @@ public class HelloHandler extends ChannelInboundHandlerAdapter {
 	}
 
 	private byte[] welcomePacket(FreeroamTalker freeroamTalker) {
-		return null;
+		byte[] welcome = { 0x00, 0x00, 0x06, 0x01 };
+		return welcome;
 	}
 
 	private boolean isHelloPacket(ByteBuf buf) {
