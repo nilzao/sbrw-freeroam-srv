@@ -1,38 +1,45 @@
 package world.soapboxrace.srv.protocol;
 
+import java.nio.ByteBuffer;
+
 public class SbrwParser {
 
+	private byte[] playerInfo;
+
+	private CarProtocol carProtocol = new CarProtocol();
+
 	public SbrwParser(byte[] playerInfo) {
-		// TODO Auto-generated constructor stub
+		parseInputData(playerInfo);
 	}
 
 	public void parseInputData(byte[] playerInfo) {
-		// TODO Auto-generated method stub
+		ByteBuffer byteBuff = ByteBuffer.allocate(6);
+		byteBuff.put(playerInfo, 3, 6);
+		carProtocol.deserialize(byteBuff.array());
+		this.playerInfo = byteBuff.array();
 	}
 
 	public byte[] getPlayerPacket() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.playerInfo;
 	}
 
 	public byte[] getStatePosPacket() {
-		// TODO Auto-generated method stub
-		return null;
+		ByteBuffer byteBuff = ByteBuffer.allocate(4);
+		byteBuff.putShort(carProtocol.getX());
+		byteBuff.putShort(carProtocol.getY());
+		return byteBuff.array();
 	}
 
 	public int getXPos() {
-		// TODO Auto-generated method stub
-		return 0;
+		return Short.toUnsignedInt(carProtocol.getX());
 	}
 
 	public int getYPos() {
-		// TODO Auto-generated method stub
-		return 0;
+		return Short.toUnsignedInt(carProtocol.getY());
 	}
 
 	public int getPlayerId() {
-		// TODO Auto-generated method stub
-		return 0;
+		return carProtocol.getPlayerId();
 	}
 
 }
