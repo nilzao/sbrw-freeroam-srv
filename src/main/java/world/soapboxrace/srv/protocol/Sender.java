@@ -11,7 +11,7 @@ public class Sender implements Runnable {
 
 	public Sender() {
 		ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
-		executor.scheduleWithFixedDelay(this, 1000L, 100L, TimeUnit.MILLISECONDS);
+		executor.scheduleWithFixedDelay(this, 1000L, 30L, TimeUnit.MILLISECONDS);
 	}
 
 	@Override
