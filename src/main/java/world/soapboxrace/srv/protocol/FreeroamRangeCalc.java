@@ -1,8 +1,11 @@
 package world.soapboxrace.srv.protocol;
 
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map.Entry;
+import java.util.stream.Collectors;
 
 public class FreeroamRangeCalc {
 
@@ -18,5 +21,27 @@ public class FreeroamRangeCalc {
 				}
 			}
 		}
+	}
+
+	private static List<FreeroamTalker> calculateClosestPlayers(FreeroamTalker freeroamTalker) {
+		return FreeroamAllTalkers.getFreeroamTalkers() //
+				.entrySet() //
+				.stream() //
+				.filter(t -> !t.getValue().equals(freeroamTalker)) //
+				.filter(t -> t.getValue().isReady()) //
+				.sorted(Comparator.comparingDouble(t -> { //
+					int[] self = { //
+							freeroamTalker.getXPos(), //
+							freeroamTalker.getYPos(),//
+					};//
+					int[] them = { //
+							t.getValue().getXPos(), //
+							t.getValue().getYPos()//
+					};//
+					return Math.sqrt(Math.pow(them[0] - self[0], 2) + Math.pow(them[1] - self[1], 2));//
+				}))//
+				.limit(2)//
+				.map(Entry::getValue)//
+				.collect(Collectors.toList());
 	}
 }

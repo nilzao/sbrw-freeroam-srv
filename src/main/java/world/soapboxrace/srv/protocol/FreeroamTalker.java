@@ -97,7 +97,7 @@ public class FreeroamTalker {
 		send(byteBuff.array());
 	}
 
-	public void removeVisibleTalkers() {
-		freeroamVisibleTalkers.removeVisibleTalkerToTalker(this);
+	public void removeIdleVisibleTalkers() {
+		freeroamVisibleTalkers.removeIdleVisibleTalkerToTalker();
 	}
 }

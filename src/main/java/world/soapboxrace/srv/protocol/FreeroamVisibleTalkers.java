@@ -8,7 +8,7 @@ public class FreeroamVisibleTalkers {
 
 	private List<FreeroamTalker> visibleTalkers;
 
-	private int limit = 3;
+	private int limit = 2;
 
 	public FreeroamVisibleTalkers() {
 		visibleTalkers = new ArrayList<>(limit);
@@ -67,13 +67,6 @@ public class FreeroamVisibleTalkers {
 		if (indexOf == -1) {
 			addTalker(newFreeroamTalker, freeroamTalker);
 		}
-		// for (FreeroamTalker freeroamTalker2 : visibleTalkers) {
-		// System.out.println("[" + freeroamTalker.getPort() + "] inside ------------------");
-		// if (freeroamTalker2 != null) {
-		// System.out.println(freeroamTalker2.getPort());
-		// }
-		// System.out.println("");
-		// }
 	}
 
 	private void addTalker(FreeroamTalker newFreeroamTalker, FreeroamTalker freeroamTalker) {
@@ -87,12 +80,24 @@ public class FreeroamVisibleTalkers {
 	}
 
 	public void removeVisibleTalkerToTalker(FreeroamTalker freeroamTalker) {
+		int indexOf = visibleTalkers.indexOf(freeroamTalker);
+		if (indexOf != -1) {
+			visibleTalkers.set(indexOf, null);
+		}
+	}
+
+	public void removeIdleVisibleTalkerToTalker() {
 		for (int i = 0; i < limit; i++) {
 			FreeroamTalker idleFreeroamTalkerTmp = visibleTalkers.get(i);
 			if (idleFreeroamTalkerTmp != null && !idleFreeroamTalkerTmp.isAlive()) {
-				System.out.println("remove from visibility");
+				System.out.println("remove idle from visibility");
 				visibleTalkers.set(i, null);
 			}
 		}
 	}
+
+	public List<FreeroamTalker> getVisibleTalkers() {
+		return visibleTalkers;
+	}
+
 }
