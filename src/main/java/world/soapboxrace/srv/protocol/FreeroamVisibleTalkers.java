@@ -72,8 +72,7 @@ public class FreeroamVisibleTalkers {
 	private void addTalker(FreeroamTalker newFreeroamTalker, FreeroamTalker freeroamTalker) {
 		for (int i = 0; i < limit; i++) {
 			if (visibleTalkers.get(i) == null) {
-				visibleTalkers.add(i, newFreeroamTalker);
-				freeroamTalker.broadcastPlayersInfo();
+				visibleTalkers.set(i, newFreeroamTalker);
 				return;
 			}
 		}
@@ -90,7 +89,7 @@ public class FreeroamVisibleTalkers {
 		for (int i = 0; i < limit; i++) {
 			FreeroamTalker idleFreeroamTalkerTmp = visibleTalkers.get(i);
 			if (idleFreeroamTalkerTmp != null && !idleFreeroamTalkerTmp.isAlive()) {
-				System.out.println("remove idle from visibility");
+				System.out.println("remove idle [" + idleFreeroamTalkerTmp.getPlayerId() + "] from visibility");
 				visibleTalkers.set(i, null);
 			}
 		}

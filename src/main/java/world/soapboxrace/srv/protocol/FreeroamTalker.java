@@ -102,4 +102,13 @@ public class FreeroamTalker {
 	public void removeIdleVisibleTalkers() {
 		freeroamVisibleTalkers.removeIdleVisibleTalkerToTalker();
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (obj == null) {
+			return false;
+		}
+		FreeroamTalker freeroamTalker = (FreeroamTalker) obj;
+		return freeroamTalker.getPort().equals(this.getPort());
+	}
 }

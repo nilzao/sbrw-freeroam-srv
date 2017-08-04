@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 public class FreeroamRangeCalc {
 
 	public static void setVisibleTalkersToTalker(FreeroamTalker freeroamTalker) {
+		freeroamTalker.getFreeroamVisibleTalkers().removeIdleVisibleTalkerToTalker();
 		HashMap<Integer, FreeroamTalker> freeroamTalkers = FreeroamAllTalkers.getFreeroamTalkers();
 		Iterator<Entry<Integer, FreeroamTalker>> iterator = freeroamTalkers.entrySet().iterator();
 		while (iterator.hasNext()) {
