@@ -111,4 +111,9 @@ public class FreeroamTalker {
 		FreeroamTalker freeroamTalker = (FreeroamTalker) obj;
 		return freeroamTalker.getPort().equals(this.getPort());
 	}
+
+	@Override
+	public String toString() {
+		return "[" + getPlayerId() + "]";
+	}
 }
