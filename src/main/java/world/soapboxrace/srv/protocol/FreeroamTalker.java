@@ -89,11 +89,13 @@ public class FreeroamTalker {
 	}
 
 	public void sendFullPacket(byte[] packet) {
-		ByteBuffer byteBuff = ByteBuffer.allocate(packet.length + 3);
+		ByteBuffer byteBuff = ByteBuffer.allocate(packet.length + 5);
 		byteBuff.put((byte) 0x00);
 		byteBuff.put((byte) 0x00);
 		byteBuff.put((byte) 0x07);
+		byteBuff.put((byte) 0xff);
 		byteBuff.put(packet);
+		byteBuff.put((byte) 0x01);
 		send(byteBuff.array());
 	}
 
