@@ -66,6 +66,7 @@ public class FreeroamVisibleTalkers {
 		int indexOf = visibleTalkers.indexOf(newFreeroamTalker);
 		if (indexOf == -1) {
 			addTalker(newFreeroamTalker, freeroamTalker);
+			freeroamTalker.broadcastPlayersInfo();
 		}
 	}
 

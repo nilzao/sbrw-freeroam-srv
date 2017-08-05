@@ -23,7 +23,8 @@ public class Sender implements Runnable {
 			FreeroamTalker freeroamTalker = next.getValue();
 			if (freeroamTalker != null) {
 				if (freeroamTalker.isReady()) {
-					freeroamTalker.broadcastPlayersInfo();
+					FreeroamRangeCalc.setVisibleTalkersToTalker(freeroamTalker);
+					freeroamTalker.broadcastPlayersXYZ();
 				}
 			}
 		}

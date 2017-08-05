@@ -32,7 +32,6 @@ public class FreeroamTalker {
 	}
 
 	public void broadcastPlayersInfo() {
-		FreeroamRangeCalc.setVisibleTalkersToTalker(this);
 		freeroamVisibleTalkers.broadcastPlayersInfoToTalker(this);
 	}
 
