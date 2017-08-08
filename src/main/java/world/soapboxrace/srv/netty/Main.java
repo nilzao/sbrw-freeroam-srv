@@ -2,6 +2,7 @@ package world.soapboxrace.srv.netty;
 
 import io.netty.channel.ChannelFuture;
 import world.soapboxrace.srv.protocol.Sender;
+import world.soapboxrace.srv.protocol.SenderInfo;
 
 public class Main {
 
@@ -11,6 +12,7 @@ public class Main {
 			port = Integer.parseInt(args[0]);
 		}
 		new Sender();
+		new SenderInfo();
 		NettyUdpServer server;
 		try {
 			server = new NettyUdpServer(port);

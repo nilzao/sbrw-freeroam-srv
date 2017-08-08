@@ -7,11 +7,11 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-public class Sender implements Runnable {
+public class SenderInfo implements Runnable {
 
-	public Sender() {
+	public SenderInfo() {
 		ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
-		executor.scheduleWithFixedDelay(this, 1000L, 30L, TimeUnit.MILLISECONDS);
+		executor.scheduleWithFixedDelay(this, 1000L, 500L, TimeUnit.MILLISECONDS);
 	}
 
 	@Override
@@ -23,7 +23,7 @@ public class Sender implements Runnable {
 			FreeroamTalker freeroamTalker = next.getValue();
 			if (freeroamTalker != null) {
 				if (freeroamTalker.isReady()) {
-					freeroamTalker.broadcastPlayersXYZ();
+					FreeroamRangeCalc.setVisibleTalkersToTalker(freeroamTalker);
 				}
 			}
 		}
