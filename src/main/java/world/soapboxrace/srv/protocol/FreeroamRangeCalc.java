@@ -63,7 +63,11 @@ public class FreeroamRangeCalc {
 	}
 
 	private static List<FreeroamTalker> copyList(List<FreeroamTalker> originalList) {
-		return new LinkedList<>(originalList);
+		List<FreeroamTalker> copiedList = new LinkedList<>();
+		for (FreeroamTalker freeroamTalkerTmp : originalList) {
+			copiedList.add(freeroamTalkerTmp);
+		}
+		return copiedList;
 	}
 
 }
