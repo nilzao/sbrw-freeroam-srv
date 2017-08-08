@@ -8,7 +8,7 @@ public class FreeroamVisibleTalkers {
 
 	private List<FreeroamTalker> visibleTalkers;
 
-	private int limit = 2;
+	private static final int limit = 3;
 
 	public FreeroamVisibleTalkers() {
 		visibleTalkers = new ArrayList<>(limit);
@@ -100,4 +100,8 @@ public class FreeroamVisibleTalkers {
 		return visibleTalkers;
 	}
 
+	public static int getLimit() {
+		return limit;
+	}
+	
 }

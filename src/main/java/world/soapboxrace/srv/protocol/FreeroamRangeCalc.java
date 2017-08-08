@@ -43,7 +43,7 @@ public class FreeroamRangeCalc {
 					};//
 					return Math.sqrt(Math.pow(them[0] - self[0], 2) + Math.pow(them[1] - self[1], 2));//
 				}))//
-				.limit(2)//
+				.limit(FreeroamVisibleTalkers.getLimit())//
 				.map(Entry::getValue)//
 				.collect(Collectors.toList());
 		List<FreeroamTalker> visibleTalkers = freeroamTalker.getFreeroamVisibleTalkers().getVisibleTalkers();
