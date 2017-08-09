@@ -16,6 +16,7 @@ public class FreeroamTalker {
 	private long latestTime = new Date().getTime();
 	private int countA = 0;
 	private SbrwParser sbrwParser;
+	private boolean removing = false;
 
 	public FreeroamTalker(ChannelHandlerContext ctx, DatagramPacket datagramPacket) {
 		this.ctx = ctx;
@@ -115,4 +116,13 @@ public class FreeroamTalker {
 	public String toString() {
 		return "[" + getPlayerId() + "]";
 	}
+
+	public boolean isRemoving() {
+		return removing;
+	}
+
+	public void removingSwitch() {
+		removing = !removing;
+	}
+
 }

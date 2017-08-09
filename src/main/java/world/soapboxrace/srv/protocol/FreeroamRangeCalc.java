@@ -40,12 +40,16 @@ public class FreeroamRangeCalc {
 		objectsToAdd.removeAll(alreadyThere);
 		List<FreeroamTalker> objectsToRemove = copyList(visibleTalkers);
 		objectsToRemove.removeAll(alreadyThere);
-		for (FreeroamTalker freeroamTalkerToRemove : objectsToRemove) {
-			freeroamTalker.getFreeroamVisibleTalkers().removeVisibleTalkerToTalker(freeroamTalkerToRemove);
+		if (freeroamTalker.isRemoving()) {
+			for (FreeroamTalker freeroamTalkerToRemove : objectsToRemove) {
+				freeroamTalker.getFreeroamVisibleTalkers().removeVisibleTalkerToTalker(freeroamTalkerToRemove);
+			}
+		} else {
+			for (FreeroamTalker freeroamTalkerToAdd : objectsToAdd) {
+				freeroamTalker.getFreeroamVisibleTalkers().addVisibleTalkerToTalker(freeroamTalkerToAdd, freeroamTalker);
+			}
 		}
-		for (FreeroamTalker freeroamTalkerToAdd : objectsToAdd) {
-			freeroamTalker.getFreeroamVisibleTalkers().addVisibleTalkerToTalker(freeroamTalkerToAdd, freeroamTalker);
-		}
+		freeroamTalker.removingSwitch();
 		return closestList;
 	}
 
