@@ -10,7 +10,6 @@ public class FreeroamRangeCalc {
 
 	public static void setVisibleTalkersToTalker(FreeroamTalker freeroamTalker) {
 		setVisibleClosestPlayers(freeroamTalker);
-		freeroamTalker.getFreeroamVisibleTalkers().removeIdleVisibleTalkerToTalker();
 	}
 
 	private static List<FreeroamTalker> setVisibleClosestPlayers(FreeroamTalker freeroamTalker) {
